@@ -10,13 +10,24 @@
     "start": "webpack-dev-server --inline --hot",
     "postinstall": "bower install"
   },
-  "author": "Romain Diegoni",
+  "author": {
+    "name": "Romain Diegoni",
+    "url": "romaindiegoni.com"
+  },
   "license": "MIT",
   "keywords": [
     "react",
     "reactjs",
     "react-component"
   ],
+  "homepage": "https://github.com/drioemgaoin/react-comments",
+  "bugs": {
+    "url": "https://github.com/drioemgaoin/react-comments/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/drioemgaoin/react-comments.git"
+  },
   "devDependencies": {
     "babel-core": "~5.8.22",
     "babel-eslint": "^4.0.10",
