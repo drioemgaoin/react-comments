@@ -9,7 +9,11 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.4.2/react-dom.js"></script>
   <script src="react-comments.js"></script>
   <script>
-    ReactDOM.render(React.createElement(Comments.CommentList), document.getElementById('comment-display'));
+    var props = { comments: [
+        { id: 1, author: 'Romain Diegoni', date: '07/04/2017 14:39 PM', content: 'My first comment'},
+        { id: 2, author: 'Jerome Saint-Pierre', date: '07/04/2017 15:39 PM', content: 'Me too!!'}
+    ]};
+    ReactDOM.render(React.createElement(Comments.CommentList, props), document.getElementById('comment-display'));
     ReactDOM.render(React.createElement(Comments.CommentForm), document.getElementById('comment-form'));
   </script>
 </body>

@@ -23,10 +23,7 @@ const CommentList = ({comments}) => {
 };
 
 CommentList.defaultProps = {
-    comments: [
-        { id: 1, author: 'Romain Diegoni', date: '07/04/2017 14:39 PM', content: 'My first comment'},
-        { id: 2, author: 'Jerome Saint-Pierre', date: '07/04/2017 15:39 PM', content: 'Me too!!'}
-    ]
+    comments: []
 };
 
 CommentList.propTypes = {
