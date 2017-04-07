@@ -631,6 +631,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	    value: true
 	});
 	
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
 	var _react = __webpack_require__(/*! react */ 2);
@@ -664,6 +666,42 @@ return /******/ (function(modules) { // webpackBootstrap
 	            console.log(data);
 	        }
 	    }, {
+	        key: 'renderField',
+	        value: function renderField(fields) {
+	            var input = fields.input,
+	                label = fields.label,
+	                type = fields.type,
+	                className = fields.className,
+	                _fields$meta = fields.meta,
+	                touched = _fields$meta.touched,
+	                error = _fields$meta.error,
+	                warning = _fields$meta.warning;
+	
+	            return _react2.default.createElement(
+	                'div',
+	                null,
+	                _react2.default.createElement(
+	                    'label',
+	                    null,
+	                    label
+	                ),
+	                _react2.default.createElement(
+	                    'div',
+	                    null,
+	                    _react2.default.createElement('input', _extends({}, input, { placeholder: label, type: type, className: className })),
+	                    touched && (error && _react2.default.createElement(
+	                        'span',
+	                        null,
+	                        error
+	                    ) || warning && _react2.default.createElement(
+	                        'span',
+	                        null,
+	                        warning
+	                    ))
+	                )
+	            );
+	        }
+	    }, {
 	        key: 'render',
 	        value: function render() {
 	            var _this2 = this;
@@ -674,10 +712,14 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	            return _react2.default.createElement(
 	                'form',
-	                { id: 'comment-form', onSubmit: handleSubmit(function (data) {
+	                { id: 'comment', onSubmit: handleSubmit(function (data) {
 	                        return _this2.handleSubmit(data);
 	                    }) },
-	                this.props.body,
+	                _react2.default.createElement(_reduxForm.Field, _extends({ name: 'content',
+	                    component: this.renderField,
+	                    type: 'text',
+	                    label: 'Content'
+	                }, this.props)),
 	                _react2.default.createElement(
 	                    'div',
 	                    null,
@@ -690,7 +732,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    return CommentForm;
 	}(_react2.default.Component);
 	
-	CommentForm = (0, _reduxForm.reduxForm)({ form: 'comment-form', store: (0, _redux.createStore)(_reduxForm.reducer) })(CommentForm);
+	CommentForm = (0, _reduxForm.reduxForm)({ form: 'comment', store: (0, _redux.createStore)(_reduxForm.reduxForm) })(CommentForm);
 	exports.default = CommentForm;
 
 /***/ },
