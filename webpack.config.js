@@ -1,4 +1,5 @@
 var path = require('path');
+var webpack = require('webpack');
 
 module.exports = {
   devtool: 'source-map',
@@ -12,16 +13,7 @@ module.exports = {
     library: 'Comments'
   },
 
-  externals: [
-    {
-      react: {
-        root: 'React',
-        commonjs2: 'react',
-        commonjs: 'react',
-        amd: 'react'
-      }
-    }
-  ],
+  modules: [path.resolve(__dirname, 'src'), 'node_modules'],
 
   devServer: {
     inline: true,
@@ -49,5 +41,11 @@ module.exports = {
           }
       }
     ]
-  }
+  },
+
+  plugins: [
+      new webpack.ProvidePlugin({
+        'React': 'react'
+      })
+  ]
 };

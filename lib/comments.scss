@@ -1,2 +1,16 @@
 .comments {
+    .comment-avatar {
+        display: inline-block;
+        height: 30px;
+        width: 30px;
+    }
+
+    .comment-header {
+        display: inline-block;
+        height: 40px;
+        background: lightgrey;
+    }
+
+    .comment-body {
+    }
 }
