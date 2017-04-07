@@ -15,6 +15,7 @@
     }
 
     .comment-header {
+        position: relative;
         display: inline-block;
         line-height: 50px;
         height: 50px;
@@ -32,6 +33,15 @@
             &:last-child {
                 float: right;
             }
+        }
+
+        &:before {
+            content: '';
+            position: absolute;
+            left: -25px;
+            border-top: 25px solid transparent;
+            border-bottom: 25px solid transparent;
+            border-right:25px solid lightgrey;
         }
     }
 
