@@ -3,12 +3,14 @@
   <title>react comments Demo</title>
 </head>
 <body>
-  <div id="main"></div>
-  <script src="react-comments.js"></script>
+  <div id="comment-display"></div>
+  <div id="comment-form"></div>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.4.2/react.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.4.2/react-dom.js"></script>
+  <script src="react-comments.js"></script>
   <script>
-    ReactDOM.render(React.createElement(Comments), document.getElementById('main'));
+    ReactDOM.render(React.createElement(Comments.CommentList), document.getElementById('comment-display'));
+    ReactDOM.render(React.createElement(Comments.CommentForm), document.getElementById('comment-form'));
   </script>
 </body>
 </html>
