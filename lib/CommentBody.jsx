@@ -1,10 +1,15 @@
 import React from 'react';
 
-export default class CommentBody extends React.Component {
-    render() {
-      return (
-          <div className="comment-body">
-              {this.props.body}
-          </div>);
-    }
-}
+const CommentBody = ({message}) => {
+  return (
+      <div className="comment-body">
+          <p>{message}</p>
+      </div>
+  );
+};
+
+CommentBody.propTypes = {
+    message: React.PropTypes.string.isRequired
+};
+
+export default CommentBody;

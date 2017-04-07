@@ -13,7 +13,7 @@ export default class Comments extends React.Component {
           <div className="comments">
             <CommentAvatar />
             <CommentHeader author='Romain Diegoni' date={moment().format('DD/MM/YYYY HH:mm A')}/>
-            <CommentBody />
+            <CommentBody message='My first comment'/>
           </div>
       );
     }
