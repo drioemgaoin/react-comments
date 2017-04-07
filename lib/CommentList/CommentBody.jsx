@@ -1,15 +1,15 @@
 import React from 'react';
 
-const CommentBody = ({message}) => {
+const CommentBody = ({content}) => {
   return (
       <div className="comment-body">
-          <p>{message}</p>
+          <p>{content}</p>
       </div>
   );
 };
 
 CommentBody.propTypes = {
-    message: React.PropTypes.string.isRequired
+    content: React.PropTypes.string.isRequired
 };
 
 export default CommentBody;
