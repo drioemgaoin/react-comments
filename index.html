@@ -2,7 +2,7 @@
 <head>
   <title>react comments Demo</title>
 </head>
-<body>
+<body style="padding: 15px;">
   <div id="comment-display"></div>
   <div id="comment-form"></div>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.4.2/react.js"></script>
@@ -12,7 +12,8 @@
     var props = { comments: [
         { id: 1, author: 'Romain Diegoni', date: '07/04/2017 14:39 PM', content: 'My first comment'},
         { id: 2, author: 'Jerome Saint-Pierre', date: '07/04/2017 15:39 PM', content: 'Me too!!'}
-    ]};
+    ],
+    defaultAvatar: 'default-avatar.png'};
     ReactDOM.render(React.createElement(Comments.CommentList, props), document.getElementById('comment-display'));
     ReactDOM.render(React.createElement(Comments.CommentForm), document.getElementById('comment-form'));
   </script>

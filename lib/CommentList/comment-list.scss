@@ -42,7 +42,7 @@
         &:before {
             content: '';
             position: absolute;
-            left: -25px;
+            left: -24px;
             border-top: 25px solid transparent;
             border-bottom: 25px solid transparent;
             border-right:25px solid lightgrey;
@@ -51,5 +51,6 @@
 
     .comment-body {
         margin-left: 100px;
+        padding: 10px 0px;
     }
 }

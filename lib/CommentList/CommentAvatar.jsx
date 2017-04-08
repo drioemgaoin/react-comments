@@ -4,7 +4,7 @@ export default class CommentAvatar extends React.Component {
     render() {
       return (
           <div className='comment-avatar'>
-              <img />
+              <img src={this.props.image}/>
           </div>
       );
     }

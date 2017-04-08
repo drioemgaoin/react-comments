@@ -490,7 +490,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	var CommentList = function CommentList(_ref) {
-	    var comments = _ref.comments;
+	    var comments = _ref.comments,
+	        defaultAvatar = _ref.defaultAvatar;
 	
 	    return _react2.default.createElement(
 	        'div',
@@ -499,7 +500,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	            return _react2.default.createElement(
 	                'div',
 	                { key: comment.id, className: 'comment' },
-	                _react2.default.createElement(_CommentAvatar2.default, null),
+	                _react2.default.createElement(_CommentAvatar2.default, { image: defaultAvatar }),
 	                _react2.default.createElement(_CommentHeader2.default, { author: comment.author, date: comment.date }),
 	                _react2.default.createElement(_CommentBody2.default, { content: comment.content })
 	            );
@@ -572,7 +573,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	            return _react2.default.createElement(
 	                'div',
 	                { className: 'comment-avatar' },
-	                _react2.default.createElement('img', null)
+	                _react2.default.createElement('img', { src: this.props.image })
 	            );
 	        }
 	    }]);
@@ -708,7 +709,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	
 	// module
-	exports.push([module.id, ".comment-list .comment:not(:first-child) {\n  margin-top: 50px; }\n\n.comment-list .comment-avatar {\n  display: inline-block;\n  vertical-align: top;\n  width: 50px; }\n  .comment-list .comment-avatar img {\n    border-radius: 50%;\n    width: 50px;\n    height: 50px;\n    margin: auto;\n    background-size: contain;\n    vertical-align: middle; }\n\n.comment-list .comment-header {\n  position: relative;\n  display: inline-block;\n  line-height: 50px;\n  height: 50px;\n  width: calc(100% - 100px);\n  background: lightgrey;\n  margin-left: 50px; }\n  .comment-list .comment-header div {\n    display: inline-block; }\n    .comment-list .comment-header div:first-child {\n      float: left; }\n    .comment-list .comment-header div:last-child {\n      float: right; }\n  .comment-list .comment-header:before {\n    content: '';\n    position: absolute;\n    left: -25px;\n    border-top: 25px solid transparent;\n    border-bottom: 25px solid transparent;\n    border-right: 25px solid lightgrey; }\n\n.comment-list .comment-body {\n  margin-left: 100px; }\n", ""]);
+	exports.push([module.id, ".comment-list .comment:not(:first-child) {\n  margin-top: 50px; }\n\n.comment-list .comment-avatar {\n  display: inline-block;\n  vertical-align: top;\n  width: 50px; }\n  .comment-list .comment-avatar img {\n    border-radius: 50%;\n    width: 50px;\n    height: 50px;\n    margin: auto;\n    background-size: contain;\n    vertical-align: middle; }\n\n.comment-list .comment-header {\n  position: relative;\n  display: inline-block;\n  line-height: 50px;\n  height: 50px;\n  width: calc(100% - 100px);\n  background: lightgrey;\n  margin-left: 50px; }\n  .comment-list .comment-header div {\n    display: inline-block; }\n    .comment-list .comment-header div:first-child {\n      float: left; }\n    .comment-list .comment-header div:last-child {\n      float: right; }\n  .comment-list .comment-header:before {\n    content: '';\n    position: absolute;\n    left: -24px;\n    border-top: 25px solid transparent;\n    border-bottom: 25px solid transparent;\n    border-right: 25px solid lightgrey; }\n\n.comment-list .comment-body {\n  margin-left: 100px;\n  padding: 10px 0px; }\n", ""]);
 	
 	// exports
 
