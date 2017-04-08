@@ -1,42 +1,40 @@
 import React from 'react';
-import { reduxForm, Field } from 'redux-form';
-import { createStore } from 'redux';
 
-class CommentForm extends React.Component {
-    handleSubmit(data) {
-        console.log(data);
+export default class CommentForm extends React.Component {
+    constructor(props) {
+      super(props);
+
+      this.state = { comment: {} }
     }
 
-    renderField(fields) {
-        const { input, label, type, className, meta: { touched, error, warning } } = fields;
-        return (
-          <div>
-            <label>{label}</label>
-            <div>
-              <input {...input} placeholder={label} type={type} className={className} />
-              {touched && ((error && <span>{error}</span>) || (warning && <span>{warning}</span>))}
-            </div>
-          </div>
-        );
+    handleInputChange(event) {
+
+      let state = this.state.comment
+      state[event.target.name] = event.target.value
+
+      this.setState({ comment: state });
+    }
+
+    handleSubmit(event) {
+      event.preventDefault();
+
+      console.log(this.state);
     }
 
     render() {
         const { handleSubmit, submitting } = this.props;
         return (
-            <form id='comment' onSubmit={handleSubmit((data) => this.handleSubmit(data))}>
-                    <Field name='content'
-                      component={this.renderField}
-                      type='text'
-                      label='Content'
-                      {...this.props} />
+          <form method="post" onSubmit={(e) => this.handleSubmit(e)}>
+            <div>
+              <label>Content</label>
+              <textarea id="content"
+                name="content"
+                type="text"
+                onChange={(e) => this.handleInputChange(e)}></textarea>
+            </div>
 
-                <div>
-                  <input type='submit' value='Create' disabled={submitting} />
-                </div>
-            </form>
+            <input type="submit" value="Create" />
+          </form>
         );
     }
 }
-
-CommentForm = reduxForm({ form: 'comment', store: createStore(reduxForm) })(CommentForm);
-export default CommentForm;
