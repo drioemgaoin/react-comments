@@ -7,7 +7,7 @@ module.exports = {
   entry: './lib/index.js',
 
   output: {
-    path: path.join(__dirname),
+    path: path.join(__dirname, 'dist'),
     filename: 'react-comments.js',
     libraryTarget: 'umd',
     library: 'Comments'
@@ -27,10 +27,8 @@ module.exports = {
   module: {
     loaders: [
       {
-        test: /\.scss$/,
-        loader: 'style!css!sass?outputStyle=expanded&' +
-          'includePaths[]=' + (path.resolve(__dirname, './bower_components')) + '&' +
-          'includePaths[]=' + (path.resolve(__dirname, './node_modules'))
+        test: /(\.css)|(\.scss)$/,
+        loader: 'style!css!sass'
       },
       {
           test: /(\.js)|(\.jsx)$/,
@@ -39,6 +37,30 @@ module.exports = {
           query: {
               presets: ['react', 'es2015', 'stage-0']
           }
+      },
+      {
+        test: /\.png$/,
+        loader: "url-loader?limit=100000"
+      },
+      {
+        test: /\.jpg$/,
+        loader: "file-loader"
+      },
+      {
+        test: /\.(woff|woff2)(\?v=\d+\.\d+\.\d+)?$/,
+        loader: 'url?limit=10000&mimetype=application/font-woff'
+      },
+      {
+        test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/,
+        loader: 'url?limit=10000&mimetype=application/octet-stream'
+      },
+      {
+        test: /\.eot(\?v=\d+\.\d+\.\d+)?$/,
+        loader: 'file'
+      },
+      {
+        test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
+        loader: 'url?limit=10000&mimetype=image/svg+xml'
       }
     ]
   },

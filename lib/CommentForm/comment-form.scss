@@ -1,0 +1,21 @@
+.comment-form {
+  padding: 10px;
+  text-align: center;
+
+  label {
+    width: 150px;
+    vertical-align: top;
+    text-align: left;
+  }
+
+  textarea {
+    width: calc(100% - 150px)!important;
+    height: 100px;
+    resize: none;
+  }
+
+  input {
+    margin-top: 10px;
+  }
+
+}

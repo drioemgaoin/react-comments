@@ -4,11 +4,11 @@ import CommentAvatar from './CommentAvatar';
 import CommentBody from './CommentBody';
 import CommentHeader from './CommentHeader';
 
-import '../comments.scss';
+import './comment-list.scss';
 
 const CommentList = ({comments}) => {
   return (
-      <div className="comments">
+      <div className="comment-list">
           {
               comments.map((comment) => {
                   return (<div key={comment.id} className="comment">
