@@ -500,7 +500,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	            return _react2.default.createElement(
 	                'div',
 	                { key: comment.id, className: 'comment' },
-	                _react2.default.createElement(_CommentAvatar2.default, { image: defaultAvatar }),
+	                _react2.default.createElement(_CommentAvatar2.default, { image: comment.avatar ? comment.avatar : defaultAvatar }),
 	                _react2.default.createElement(_CommentHeader2.default, { author: comment.author, date: comment.date }),
 	                _react2.default.createElement(_CommentBody2.default, { content: comment.content })
 	            );

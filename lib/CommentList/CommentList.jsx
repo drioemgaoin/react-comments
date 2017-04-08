@@ -12,7 +12,7 @@ const CommentList = ({comments, defaultAvatar}) => {
           {
               comments.map((comment) => {
                   return (<div key={comment.id} className="comment">
-                    <CommentAvatar image={defaultAvatar}/>
+                    <CommentAvatar image={comment.avatar ? comment.avatar : defaultAvatar}/>
                     <CommentHeader author={comment.author} date={comment.date} />
                     <CommentBody content={comment.content} />
                   </div>);
