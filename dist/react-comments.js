@@ -63,19 +63,27 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var _bootstrap2 = _interopRequireDefault(_bootstrap);
 	
-	var _CommentList = __webpack_require__(/*! ./CommentList/CommentList */ 10);
+	var _CommentList = __webpack_require__(/*! ./components/CommentList/CommentList */ 10);
 	
 	var _CommentList2 = _interopRequireDefault(_CommentList);
 	
-	var _CommentForm = __webpack_require__(/*! ./CommentForm/CommentForm */ 17);
+	var _CommentForm = __webpack_require__(/*! ./components/CommentForm/CommentForm */ 17);
 	
 	var _CommentForm2 = _interopRequireDefault(_CommentForm);
+	
+	var _comments = __webpack_require__(/*! ./reducers/comments */ 138);
+	
+	var _comments2 = _interopRequireDefault(_comments);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	module.exports = {
+	    // components
 	    CommentList: _CommentList2.default,
-	    CommentForm: _CommentForm2.default
+	    CommentForm: _CommentForm2.default,
+	
+	    // reducers
+	    commentsReducer: _comments2.default
 	};
 
 /***/ },
@@ -458,9 +466,9 @@ return /******/ (function(modules) { // webpackBootstrap
 
 /***/ },
 /* 10 */
-/*!*****************************************!*\
-  !*** ./lib/CommentList/CommentList.jsx ***!
-  \*****************************************/
+/*!****************************************************!*\
+  !*** ./lib/components/CommentList/CommentList.jsx ***!
+  \****************************************************/
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -533,9 +541,9 @@ return /******/ (function(modules) { // webpackBootstrap
 
 /***/ },
 /* 12 */
-/*!*******************************************!*\
-  !*** ./lib/CommentList/CommentAvatar.jsx ***!
-  \*******************************************/
+/*!******************************************************!*\
+  !*** ./lib/components/CommentList/CommentAvatar.jsx ***!
+  \******************************************************/
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -585,9 +593,9 @@ return /******/ (function(modules) { // webpackBootstrap
 
 /***/ },
 /* 13 */
-/*!*****************************************!*\
-  !*** ./lib/CommentList/CommentBody.jsx ***!
-  \*****************************************/
+/*!****************************************************!*\
+  !*** ./lib/components/CommentList/CommentBody.jsx ***!
+  \****************************************************/
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -624,9 +632,9 @@ return /******/ (function(modules) { // webpackBootstrap
 
 /***/ },
 /* 14 */
-/*!*******************************************!*\
-  !*** ./lib/CommentList/CommentHeader.jsx ***!
-  \*******************************************/
+/*!******************************************************!*\
+  !*** ./lib/components/CommentList/CommentHeader.jsx ***!
+  \******************************************************/
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -670,25 +678,25 @@ return /******/ (function(modules) { // webpackBootstrap
 
 /***/ },
 /* 15 */
-/*!*******************************************!*\
-  !*** ./lib/CommentList/comment-list.scss ***!
-  \*******************************************/
+/*!******************************************************!*\
+  !*** ./lib/components/CommentList/comment-list.scss ***!
+  \******************************************************/
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(/*! !../../~/css-loader!../../~/sass-loader!./comment-list.scss */ 16);
+	var content = __webpack_require__(/*! !../../../~/css-loader!../../../~/sass-loader!./comment-list.scss */ 16);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(/*! ../../~/style-loader/addStyles.js */ 9)(content, {});
+	var update = __webpack_require__(/*! ../../../~/style-loader/addStyles.js */ 9)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!../../node_modules/css-loader/index.js!../../node_modules/sass-loader/index.js!./comment-list.scss", function() {
-				var newContent = require("!!../../node_modules/css-loader/index.js!../../node_modules/sass-loader/index.js!./comment-list.scss");
+			module.hot.accept("!!../../../node_modules/css-loader/index.js!../../../node_modules/sass-loader/index.js!./comment-list.scss", function() {
+				var newContent = require("!!../../../node_modules/css-loader/index.js!../../../node_modules/sass-loader/index.js!./comment-list.scss");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -699,12 +707,12 @@ return /******/ (function(modules) { // webpackBootstrap
 
 /***/ },
 /* 16 */
-/*!**************************************************************************!*\
-  !*** ./~/css-loader!./~/sass-loader!./lib/CommentList/comment-list.scss ***!
-  \**************************************************************************/
+/*!*************************************************************************************!*\
+  !*** ./~/css-loader!./~/sass-loader!./lib/components/CommentList/comment-list.scss ***!
+  \*************************************************************************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(/*! ../../~/css-loader/lib/css-base.js */ 3)();
+	exports = module.exports = __webpack_require__(/*! ../../../~/css-loader/lib/css-base.js */ 3)();
 	// imports
 	
 	
@@ -716,9 +724,9 @@ return /******/ (function(modules) { // webpackBootstrap
 
 /***/ },
 /* 17 */
-/*!*****************************************!*\
-  !*** ./lib/CommentForm/CommentForm.jsx ***!
-  \*****************************************/
+/*!****************************************************!*\
+  !*** ./lib/components/CommentForm/CommentForm.jsx ***!
+  \****************************************************/
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -16988,25 +16996,25 @@ return /******/ (function(modules) { // webpackBootstrap
 
 /***/ },
 /* 136 */
-/*!*******************************************!*\
-  !*** ./lib/CommentForm/comment-form.scss ***!
-  \*******************************************/
+/*!******************************************************!*\
+  !*** ./lib/components/CommentForm/comment-form.scss ***!
+  \******************************************************/
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(/*! !../../~/css-loader!../../~/sass-loader!./comment-form.scss */ 137);
+	var content = __webpack_require__(/*! !../../../~/css-loader!../../../~/sass-loader!./comment-form.scss */ 137);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(/*! ../../~/style-loader/addStyles.js */ 9)(content, {});
+	var update = __webpack_require__(/*! ../../../~/style-loader/addStyles.js */ 9)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!../../node_modules/css-loader/index.js!../../node_modules/sass-loader/index.js!./comment-form.scss", function() {
-				var newContent = require("!!../../node_modules/css-loader/index.js!../../node_modules/sass-loader/index.js!./comment-form.scss");
+			module.hot.accept("!!../../../node_modules/css-loader/index.js!../../../node_modules/sass-loader/index.js!./comment-form.scss", function() {
+				var newContent = require("!!../../../node_modules/css-loader/index.js!../../../node_modules/sass-loader/index.js!./comment-form.scss");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -17017,12 +17025,12 @@ return /******/ (function(modules) { // webpackBootstrap
 
 /***/ },
 /* 137 */
-/*!**************************************************************************!*\
-  !*** ./~/css-loader!./~/sass-loader!./lib/CommentForm/comment-form.scss ***!
-  \**************************************************************************/
+/*!*************************************************************************************!*\
+  !*** ./~/css-loader!./~/sass-loader!./lib/components/CommentForm/comment-form.scss ***!
+  \*************************************************************************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(/*! ../../~/css-loader/lib/css-base.js */ 3)();
+	exports = module.exports = __webpack_require__(/*! ../../../~/css-loader/lib/css-base.js */ 3)();
 	// imports
 	
 	
@@ -17031,6 +17039,62 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	// exports
 
+
+/***/ },
+/* 138 */
+/*!**********************************!*\
+  !*** ./lib/reducers/comments.js ***!
+  \**********************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _comment = __webpack_require__(/*! ../actions/comment */ 139);
+	
+	var initialState = {};
+	
+	var comments = function comments() {
+	  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
+	  var action = arguments[1];
+	
+	  switch (action.type) {
+	    case _comment.ADD_COMMENT:
+	      return state.set({
+	        content: action.content
+	      });
+	
+	    default:
+	      return state;
+	  }
+	};
+	
+	exports.default = comments;
+
+/***/ },
+/* 139 */
+/*!********************************!*\
+  !*** ./lib/actions/comment.js ***!
+  \********************************/
+/***/ function(module, exports) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.addComment = addComment;
+	var ADD_COMMENT = exports.ADD_COMMENT = 'ADD_COMMENT';
+	
+	function addComment(content) {
+	  return {
+	    type: ADD_COMENT,
+	    content: content
+	  };
+	}
 
 /***/ }
 /******/ ])
