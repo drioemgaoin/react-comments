@@ -508,7 +508,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	
 	var mapStateToProps = function mapStateToProps(state) {
-	    return state.comments;
+	    return state;
 	};
 	
 	var CommentList = function (_React$Component) {
@@ -17096,12 +17096,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	var initialState = { comments: [] };
 	
 	var comments = function comments() {
-	  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
+	  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
 	  var action = arguments[1];
 	
 	  switch (action.type) {
 	    case _comment.ADD_COMMENT:
-	      return Object.assign({}, state, { comments: [].concat(_toConsumableArray(state.comments), [action.comment]) });
+	      return [].concat(_toConsumableArray(state), [action.comment]);
 	
 	    default:
 	      return state;

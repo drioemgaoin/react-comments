@@ -8,7 +8,7 @@ import CommentHeader from './CommentHeader';
 import './comment-list.scss';
 
 let mapStateToProps = (state) => {
-  return state.comments;
+  return state;
 }
 
 class CommentList extends React.Component {
