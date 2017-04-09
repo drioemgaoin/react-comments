@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default class CommentAvatar extends React.Component {
+class CommentAvatar extends React.Component {
     render() {
       return (
           <div className='comment-avatar'>
@@ -9,3 +9,10 @@ export default class CommentAvatar extends React.Component {
       );
     }
 }
+
+CommentAvatar.propTypes = {
+    image: React.PropTypes.string.isRequired
+};
+
+
+export default CommentAvatar;

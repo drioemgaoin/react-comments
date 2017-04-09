@@ -1,28 +1,33 @@
 import React from 'react';
+import { connect } from 'react-redux'
 import moment from 'moment';
+
+import { addComment } from '../../actions/comment';
 
 import './comment-form.scss';
 
-export default class CommentForm extends React.Component {
+class CommentForm extends React.Component {
     constructor(props) {
       super(props);
 
-      this.state = { comment: {} }
+      this.state = {}
     }
 
     handleInputChange(event) {
 
-      let state = this.state.comment
+      let state = this.state
       state[event.target.name] = event.target.value
-      state.date = moment();
 
-      this.setState({ comment: state });
+      this.setState(state);
     }
 
     handleSubmit(event) {
       event.preventDefault();
 
-      console.log(this.state);
+      const { dispatch } = this.props;
+      dispatch(addComment(this.state.content, this.state.avatar, moment().format('DD/MM/YYYY HH:mm A')));
+
+      this.setState({ content: '' });
     }
 
     render() {
@@ -35,6 +40,7 @@ export default class CommentForm extends React.Component {
                 className='form-control'
                 name="content"
                 type="text"
+                value={this.state.content}
                 onChange={(e) => this.handleInputChange(e)}></textarea>
             </div>
 
@@ -43,3 +49,5 @@ export default class CommentForm extends React.Component {
         );
     }
 }
+
+export default connect()(CommentForm);
