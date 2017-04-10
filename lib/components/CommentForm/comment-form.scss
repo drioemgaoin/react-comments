@@ -2,6 +2,11 @@
   padding: 10px;
   text-align: center;
 
+  .form-inline {
+      text-align: left;
+      padding: 5px 0px;
+  }
+
   label {
     width: 150px;
     vertical-align: top;

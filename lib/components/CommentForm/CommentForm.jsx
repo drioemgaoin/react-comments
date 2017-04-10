@@ -1,8 +1,9 @@
 import React from 'react';
-import { connect } from 'react-redux'
+import { connect } from 'react-redux';
 import moment from 'moment';
 
 import { addComment } from '../../actions/comment';
+import Stars from '../Stars/Stars';
 
 import './comment-form.scss';
 
@@ -10,7 +11,7 @@ class CommentForm extends React.Component {
     constructor(props) {
       super(props);
 
-      this.state = {}
+      this.state = {};
     }
 
     handleInputChange(event) {
@@ -42,6 +43,11 @@ class CommentForm extends React.Component {
                 type="text"
                 value={this.state.content}
                 onChange={(e) => this.handleInputChange(e)}></textarea>
+            </div>
+
+            <div className='form-inline'>
+                <label>Note</label>
+                <Stars className='form-control' />
             </div>
 
             <input className='btn btn-primary' type="submit" value="Create" />
