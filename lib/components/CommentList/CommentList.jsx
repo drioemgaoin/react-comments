@@ -1,5 +1,6 @@
 import React from 'react';
-import { connect } from 'react-redux'
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
 import CommentAvatar from './CommentAvatar';
 import CommentBody from './CommentBody';
@@ -13,12 +14,12 @@ let mapStateToProps = (state) => {
 
 class CommentList extends React.Component {
   static propTypes = {
-    comments: React.PropTypes.arrayOf(
-        React.PropTypes.shape({
-            author: React.PropTypes.string,
-            date: React.PropTypes.string.isRequired,
-            content: React.PropTypes.string.isRequired,
-            avatar: React.PropTypes.string,
+    comments: PropTypes.arrayOf(
+        PropTypes.shape({
+            author: PropTypes.string,
+            date: PropTypes.string.isRequired,
+            content: PropTypes.string.isRequired,
+            avatar: PropTypes.string,
         })
     )
   };

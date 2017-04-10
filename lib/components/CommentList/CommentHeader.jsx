@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const CommentHeader = ({author, date}) => {
   return (
@@ -10,8 +11,8 @@ const CommentHeader = ({author, date}) => {
 };
 
 CommentHeader.propTypes = {
-    author: React.PropTypes.string.isRequired,
-    date: React.PropTypes.string.isRequired
+    author: PropTypes.string.isRequired,
+    date: PropTypes.string.isRequired
 };
 
 export default CommentHeader;

@@ -3,12 +3,7 @@
   "version": "1.0.0",
   "description": "react comments",
   "scripts": {
-    "test": "eslint lib/ spec/ && ./node_modules/karma/bin/karma start karma.conf.js",
-    "watch-test": "./node_modules/karma/bin/karma start karma.conf.js --auto-watch --no-single-run",
-    "build": "webpack -d",
-    "rename-css-bower-dependencies": "find bower_components -name '*.css' | sed -e 'p;s/.css$/.scss/' | xargs -n2 mv",
-    "start": "webpack-dev-server --inline --hot",
-    "postinstall": "bower install"
+    "start": "node server"
   },
   "author": {
     "name": "Romain Diegoni",
@@ -41,6 +36,7 @@
     "eslint": "^0.21.1",
     "eslint-plugin-react": "^2.3.0",
     "exports-loader": "0.6.4",
+    "express": "4.15.2",
     "file-loader": "0.11.1",
     "imports-loader": "0.7.1",
     "jasmine": "~2.3.2",
@@ -51,12 +47,15 @@
     "karma-sourcemap-loader": "~0.3.5",
     "karma-webpack": "~1.7.0",
     "node-sass": "4.5.2",
+    "prop-types": "15.5.6",
     "resolve-url-loader": "2.0.2",
     "sass-loader": "2.0.1",
     "style-loader": "0.12.4",
     "url-loader": "0.5.8",
     "webpack": "1.11.0",
-    "webpack-dev-server": "~1.10.1"
+    "webpack-combine-loaders": "2.0.3",
+    "webpack-dev-server": "~1.10.1",
+    "webpack-hot-middleware": "2.18.0"
   },
   "dependencies": {
     "babel-preset-react": "6.24.1",

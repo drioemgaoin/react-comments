@@ -9,11 +9,6 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/redux/3.6.0/redux.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/react-redux/5.0.3/react-redux.js"></script>
   <script src="dist/react-comments.js"></script>
-  <script type="module">
-    import ReactStars from 'node_modules/react-stars/dist/react-stars.js';
-
-    console.log(ReactStars);
-  </script>
   <script>
     const { Provider } = ReactRedux;
     const { createStore, combineReducers } = Redux;
@@ -29,8 +24,6 @@
     });
 
     const store = createStore(reducer, props);
-
-    // ReactDOM.render(<ReactStars />, document.getElementById('container'));
 
     ReactDOM.render(
       React.createElement(Provider, {store: store},

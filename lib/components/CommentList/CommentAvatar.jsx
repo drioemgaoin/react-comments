@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 class CommentAvatar extends React.Component {
     render() {
@@ -11,7 +12,7 @@ class CommentAvatar extends React.Component {
 }
 
 CommentAvatar.propTypes = {
-    image: React.PropTypes.string.isRequired
+    image: PropTypes.string.isRequired
 };
 
 
