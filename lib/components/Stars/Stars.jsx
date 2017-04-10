@@ -29,7 +29,7 @@ export default class ReactStars extends React.Component {
 
         this.state = {
           uniqueness: (Math.random() + '').replace('.', ''),
-          value: props.value || 2.4,
+          value: props.value || 0,
           stars: []
         };
 
@@ -54,27 +54,25 @@ export default class ReactStars extends React.Component {
     mouseOver(event) {
         event.preventDefault();
 
-
         const spread = event.target.getBoundingClientRect().right - event.target.getBoundingClientRect().left;
         const mouseAt = event.clientX - event.target.getBoundingClientRect().left;
         if (mouseAt > 0) {
             let index = Number(event.target.getAttribute('data-index'));
 
             const newValue = index + (mouseAt / spread);
-            this.state.stars.map((star, i) => {
-                star.active = i < index || (i === index && newValue === 5);
-            });
-            
-            this.setState({ value: newValue, stars: this.state.stars});
+            this.setValue(newValue, index);
         }
-    }
-
-    mouseMove(event) {
-        event.preventDefault();
     }
 
     mouseLeave(event) {
         event.preventDefault();
+
+        let index = Number(event.target.getAttribute('data-index'));
+        if (index === 0) {
+            this.setValue(0, index);
+        } else if (index === (this.state.config.count - 1)) {
+            this.setValue(this.state.config.count, index);
+        }
     }
 
     clicked(event) {
@@ -96,6 +94,14 @@ export default class ReactStars extends React.Component {
         if (this.props.onChange) {
           this.props.onChange(value);
         }
+    }
+
+    setValue(value, index) {
+        this.state.stars.map((star, i) => {
+            star.active = i < index || (i === index && value === (index + 1));
+        });
+
+        this.setState({ value: value });
     }
 
     getRate() {
@@ -167,13 +173,11 @@ export default class ReactStars extends React.Component {
 
           return (
              <span key={i}
-               ref={'star' + i}
                className={starClass}
                style={style}
                data-index={i}
                data-forhalf={char}
                onMouseOver={this.mouseOver.bind(this)}
-               onMouseMove={this.mouseOver.bind(this)}
                onMouseLeave={this.mouseLeave.bind(this)}
                onClick={this.clicked.bind(this)}>
                {char}

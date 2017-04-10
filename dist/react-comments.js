@@ -19741,7 +19741,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	        _this.state = {
 	            uniqueness: (Math.random() + '').replace('.', ''),
-	            value: props.value || 2.4,
+	            value: props.value || 0,
 	            stars: []
 	        };
 	
@@ -19776,22 +19776,20 @@ return /******/ (function(modules) { // webpackBootstrap
 	                var index = Number(event.target.getAttribute('data-index'));
 	
 	                var newValue = index + mouseAt / spread;
-	                this.state.stars.map(function (star, i) {
-	                    star.active = i < index || i === index && newValue === 5;
-	                });
-	
-	                this.setState({ value: newValue, stars: this.state.stars });
+	                this.setValue(newValue, index);
 	            }
-	        }
-	    }, {
-	        key: 'mouseMove',
-	        value: function mouseMove(event) {
-	            event.preventDefault();
 	        }
 	    }, {
 	        key: 'mouseLeave',
 	        value: function mouseLeave(event) {
 	            event.preventDefault();
+	
+	            var index = Number(event.target.getAttribute('data-index'));
+	            if (index === 0) {
+	                this.setValue(0, index);
+	            } else if (index === this.state.config.count - 1) {
+	                this.setValue(this.state.config.count, index);
+	            }
 	        }
 	    }, {
 	        key: 'clicked',
@@ -19815,6 +19813,15 @@ return /******/ (function(modules) { // webpackBootstrap
 	            if (this.props.onChange) {
 	                this.props.onChange(value);
 	            }
+	        }
+	    }, {
+	        key: 'setValue',
+	        value: function setValue(value, index) {
+	            this.state.stars.map(function (star, i) {
+	                star.active = i < index || i === index && value === index + 1;
+	            });
+	
+	            this.setState({ value: value });
 	        }
 	    }, {
 	        key: 'getRate',
@@ -19892,13 +19899,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	                return _react2.default.createElement(
 	                    'span',
 	                    { key: i,
-	                        ref: 'star' + i,
 	                        className: starClass,
 	                        style: style,
 	                        'data-index': i,
 	                        'data-forhalf': char,
 	                        onMouseOver: _this2.mouseOver.bind(_this2),
-	                        onMouseMove: _this2.mouseOver.bind(_this2),
 	                        onMouseLeave: _this2.mouseLeave.bind(_this2),
 	                        onClick: _this2.clicked.bind(_this2) },
 	                    char
