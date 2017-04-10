@@ -19731,10 +19731,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	    float: 'left'
 	};
 	
-	var getHalfStarStyles = function getHalfStarStyles(color, uniqueness) {
-	    return '\n    .react-stars-' + uniqueness + ':before {\n      position: absolute;\n      overflow: hidden;\n      display: block;\n      z-index: 1;\n      top: 0; left: 0;\n      width: 50%;\n      content: attr(data-forhalf);\n      color: ' + color + ';\n  }';
-	};
-	
 	var ReactStars = function (_React$Component) {
 	    _inherits(ReactStars, _React$Component);
 	
@@ -19745,7 +19741,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	        _this.state = {
 	            uniqueness: (Math.random() + '').replace('.', ''),
-	            value: props.value || 0,
+	            value: props.value || 2.4,
 	            stars: []
 	        };
 	
@@ -19773,6 +19769,19 @@ return /******/ (function(modules) { // webpackBootstrap
 	        key: 'mouseOver',
 	        value: function mouseOver(event) {
 	            event.preventDefault();
+	
+	            var spread = event.target.getBoundingClientRect().right - event.target.getBoundingClientRect().left;
+	            var mouseAt = event.clientX - event.target.getBoundingClientRect().left;
+	            if (mouseAt > 0) {
+	                var index = Number(event.target.getAttribute('data-index'));
+	
+	                var newValue = index + mouseAt / spread;
+	                this.state.stars.map(function (star, i) {
+	                    star.active = i < index || i === index && newValue === 5;
+	                });
+	
+	                this.setState({ value: newValue, stars: this.state.stars });
+	            }
 	        }
 	    }, {
 	        key: 'mouseMove',
@@ -19837,24 +19846,41 @@ return /******/ (function(modules) { // webpackBootstrap
 	            return stars;
 	        }
 	    }, {
+	        key: 'getStyleElement',
+	        value: function getStyleElement(color, uniqueness) {
+	            var width = this.state.value % 1 * 100 + '%';
+	            return '\n          .react-stars-' + uniqueness + ':before {\n            position: absolute;\n            overflow: hidden;\n            display: block;\n            z-index: 1;\n            top: 0; left: 0;\n            width: ' + width + ';\n            content: attr(data-forhalf);\n            color: ' + color + ';\n        }';
+	        }
+	    }, {
+	        key: 'renderStyleElement',
+	        value: function renderStyleElement() {
+	            var _state = this.state,
+	                config = _state.config,
+	                uniqueness = _state.uniqueness;
+	
+	            return _react2.default.createElement('style', { dangerouslySetInnerHTML: {
+	                    __html: this.getStyleElement(config.color2, uniqueness)
+	                } });
+	        }
+	    }, {
 	        key: 'renderStars',
 	        value: function renderStars() {
 	            var _this2 = this;
 	
-	            var _state = this.state,
-	                halfStar = _state.halfStar,
-	                stars = _state.stars,
-	                uniqueness = _state.uniqueness;
+	            var _state2 = this.state,
+	                uniqueness = _state2.uniqueness,
+	                stars = _state2.stars,
+	                value = _state2.value;
 	            var _state$config = this.state.config,
 	                color1 = _state$config.color1,
 	                color2 = _state$config.color2,
 	                size = _state$config.size,
-	                char = _state$config.char,
-	                half = _state$config.half;
+	                char = _state$config.char;
 	
 	            return stars.map(function (star, i) {
+	
 	                var starClass = '';
-	                if (half && !halfStar.hidden && halfStar.at === i) {
+	                if (value > 0 && Math.floor(value) === i) {
 	                    starClass = 'react-stars-' + uniqueness;
 	                }
 	
@@ -19865,10 +19891,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	                return _react2.default.createElement(
 	                    'span',
-	                    {
+	                    { key: i,
+	                        ref: 'star' + i,
 	                        className: starClass,
 	                        style: style,
-	                        key: i,
 	                        'data-index': i,
 	                        'data-forhalf': char,
 	                        onMouseOver: _this2.mouseOver.bind(_this2),
@@ -19887,7 +19913,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	            return _react2.default.createElement(
 	                'div',
 	                { className: className, style: parentStyles },
-	                this.state.config.half ? this.renderHalfStarStyleElement() : '',
+	                this.renderStyleElement(),
 	                this.renderStars()
 	            );
 	        }

@@ -13,20 +13,6 @@ const defaultStyles = {
   float: 'left'
 };
 
-const getHalfStarStyles = (color, uniqueness) => {
-  return `
-    .react-stars-${uniqueness}:before {
-      position: absolute;
-      overflow: hidden;
-      display: block;
-      z-index: 1;
-      top: 0; left: 0;
-      width: 50%;
-      content: attr(data-forhalf);
-      color: ${color};
-  }`;
-};
-
 export default class ReactStars extends React.Component {
     static defaultProps = {
         half: true,
@@ -43,7 +29,7 @@ export default class ReactStars extends React.Component {
 
         this.state = {
           uniqueness: (Math.random() + '').replace('.', ''),
-          value: props.value || 0,
+          value: props.value || 2.4,
           stars: []
         };
 
@@ -67,6 +53,20 @@ export default class ReactStars extends React.Component {
 
     mouseOver(event) {
         event.preventDefault();
+
+
+        const spread = event.target.getBoundingClientRect().right - event.target.getBoundingClientRect().left;
+        const mouseAt = event.clientX - event.target.getBoundingClientRect().left;
+        if (mouseAt > 0) {
+            let index = Number(event.target.getAttribute('data-index'));
+
+            const newValue = index + (mouseAt / spread);
+            this.state.stars.map((star, i) => {
+                star.active = i < index || (i === index && newValue === 5);
+            });
+            
+            this.setState({ value: newValue, stars: this.state.stars});
+        }
     }
 
     mouseMove(event) {
@@ -125,13 +125,39 @@ export default class ReactStars extends React.Component {
         return stars;
     }
 
+    getStyleElement(color, uniqueness) {
+        const width = ((this.state.value % 1) * 100) + '%';
+        return `
+          .react-stars-${uniqueness}:before {
+            position: absolute;
+            overflow: hidden;
+            display: block;
+            z-index: 1;
+            top: 0; left: 0;
+            width: ${width};
+            content: attr(data-forhalf);
+            color: ${color};
+        }`;
+    }
+
+    renderStyleElement() {
+        const { config, uniqueness } = this.state;
+        return (
+          <style dangerouslySetInnerHTML={{
+            __html: this.getStyleElement(config.color2, uniqueness)
+          }}>
+          </style>
+        );
+    }
+
     renderStars() {
-        const { halfStar, stars, uniqueness } = this.state;
-        const { color1, color2, size, char, half } = this.state.config;
+        const { uniqueness, stars, value } = this.state;
+        const { color1, color2, size, char } = this.state.config;
         return stars.map((star, i) => {
+
           let starClass = '';
-          if(half && !halfStar.hidden && halfStar.at === i) {
-            starClass = `react-stars-${uniqueness}`;
+          if (value > 0 && Math.floor(value) === i) {
+              starClass = `react-stars-${uniqueness}`;
           }
 
           const style = Object.assign({}, defaultStyles, {
@@ -140,19 +166,19 @@ export default class ReactStars extends React.Component {
           });
 
           return (
-            <span
-              className={starClass}
-              style={style}
-              key={i}
-              data-index={i}
-              data-forhalf={char}
-              onMouseOver={this.mouseOver.bind(this)}
-              onMouseMove={this.mouseOver.bind(this)}
-              onMouseLeave={this.mouseLeave.bind(this)}
-              onClick={this.clicked.bind(this)}>
-              {char}
-            </span>
-        );
+             <span key={i}
+               ref={'star' + i}
+               className={starClass}
+               style={style}
+               data-index={i}
+               data-forhalf={char}
+               onMouseOver={this.mouseOver.bind(this)}
+               onMouseMove={this.mouseOver.bind(this)}
+               onMouseLeave={this.mouseLeave.bind(this)}
+               onClick={this.clicked.bind(this)}>
+               {char}
+             </span>
+         );
       });
     }
 
@@ -160,8 +186,7 @@ export default class ReactStars extends React.Component {
         const { className } = this.props;
         return (
           <div className={className} style={parentStyles}>
-            {this.state.config.half ?
-            this.renderHalfStarStyleElement() : ''}
+            {this.renderStyleElement()}
             {this.renderStars()}
           </div>
         );
