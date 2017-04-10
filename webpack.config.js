@@ -1,5 +1,6 @@
-var path = require('path');
-var webpack = require('webpack');
+const path = require('path');
+const CombineLoaders = require('webpack-combine-loaders');
+const webpack = require('webpack');
 
 module.exports = {
   devtool: 'source-map',
@@ -13,22 +14,30 @@ module.exports = {
     library: 'Comments'
   },
 
-  modules: [path.resolve(__dirname, 'src'), 'node_modules'],
-
   devServer: {
     inline: true,
     port: 8008
   },
 
   resolve: {
-    extensions: ['', '.js', '.jsx', '.scss']
+      extensions: ['.js', '.jsx', '.es6.jsx', '.scss']
   },
 
   module: {
     loaders: [
       {
         test: /(\.css)|(\.scss)$/,
-        loader: 'style!css!sass'
+        loader: CombineLoaders([
+          {
+            loader: 'style-loader'
+          },
+          {
+            loader: 'css-loader'
+          },
+          {
+            loader: 'sass-loader'
+          }
+        ])
       },
       {
           test: /(\.js)|(\.jsx)$/,
@@ -40,27 +49,27 @@ module.exports = {
       },
       {
         test: /\.png$/,
-        loader: "url-loader?limit=100000"
+        loader: 'url-loader?limit=100000'
       },
       {
         test: /\.jpg$/,
-        loader: "file-loader"
+        loader: 'file-loader'
       },
       {
         test: /\.(woff|woff2)(\?v=\d+\.\d+\.\d+)?$/,
-        loader: 'url?limit=10000&mimetype=application/font-woff'
+        loader: 'url-loader?limit=10000&mimetype=application/font-woff'
       },
       {
         test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/,
-        loader: 'url?limit=10000&mimetype=application/octet-stream'
+        loader: 'url-loader?limit=10000&mimetype=application/octet-stream'
       },
       {
         test: /\.eot(\?v=\d+\.\d+\.\d+)?$/,
-        loader: 'file'
+        loader: 'file-loader'
       },
       {
         test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
-        loader: 'url?limit=10000&mimetype=image/svg+xml'
+        loader: 'url-loader?limit=10000&mimetype=image/svg+xml'
       }
     ]
   },
