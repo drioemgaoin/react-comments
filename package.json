@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "description": "react comments",
   "scripts": {
-    "start": "node server"
+    "start": "node server",
+    "postinstall": "node deploy"
   },
   "author": {
     "name": "Romain Diegoni",
@@ -61,6 +62,7 @@
     "babel-preset-react": "6.24.1",
     "babel-runtime": "~5.8.20",
     "bootstrap": "3.3.7",
+    "child_process": "^1.0.2",
     "moment": "2.18.1",
     "node-sass": "^4.5.2",
     "react": "15.5.3",

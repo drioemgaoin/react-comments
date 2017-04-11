@@ -4,14 +4,12 @@ const nodeModulesPath = path.resolve(__dirname, 'node_modules');
 const buildPath = path.resolve(__dirname, 'public', 'build');
 const mainPath = path.resolve(__dirname, 'lib', 'app');
 
-const CombineLoaders = require('webpack-combine-loaders');
+const combineLoaders = require('webpack-combine-loaders');
 
 module.exports = {
   devtool: 'source-map',
 
   context: path.join(__dirname),
-
-  debug: true,
 
   entry: [
     // For hot style updates
@@ -27,8 +25,6 @@ module.exports = {
   resolve: {
     extensions: ['', '.js', '.jsx', '.es6.jsx', '.scss', '.css']
   },
-
-  // context: path.join(__dirname),
 
   output: {
     // We need to give Webpack a path. It does not actually need it,
@@ -47,7 +43,7 @@ module.exports = {
     loaders: [
       {
         test: /(\.css)|(\.scss)$/,
-        loader: CombineLoaders([
+        loader: combineLoaders([
           {
             loader: 'style-loader'
           },
@@ -61,7 +57,7 @@ module.exports = {
       },
       {
           test: /(\.js)|(\.jsx)$/,
-          exclude: /node_modules/,
+          exclude: [nodeModulesPath],
           loader: 'babel-loader',
           query: {
               presets: ['react', 'es2015', 'stage-0']
