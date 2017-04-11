@@ -2,7 +2,7 @@ const Webpack = require('webpack');
 const path = require('path');
 const nodeModulesPath = path.resolve(__dirname, 'node_modules');
 const buildPath = path.resolve(__dirname, 'public', 'build');
-const mainPath = path.resolve(__dirname, 'lib', 'app');
+const mainPath = path.resolve(__dirname, 'app', 'app');
 
 const combineLoaders = require('webpack-combine-loaders');
 
