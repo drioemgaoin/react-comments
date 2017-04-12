@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "description": "react comments",
   "scripts": {
-    "start": "node server/start.js"
+    "start": "node server/start.js",
+    "build": "node server/build.js"
   },
   "author": {
     "name": "Romain Diegoni",
