@@ -1,6 +1,6 @@
 const autoprefixer = require('autoprefixer');
 const webpack = require('webpack');
-const HtmlwebpackPlugin = require('html-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin');
 const InterpolateHtmlPlugin = require('react-dev-utils/InterpolateHtmlPlugin');
 const WatchMissingNodeModulesPlugin = require('react-dev-utils/WatchMissingNodeModulesPlugin');
@@ -154,7 +154,7 @@ module.exports = {
       // In development, this will be an empty string.
       new InterpolateHtmlPlugin(env.raw),
       // Generates an `index.html` file with the <script> injected.
-      new HtmlwebpackPlugin({
+      new HtmlWebpackPlugin({
         inject: true,
         template: paths.appHtml
       }),

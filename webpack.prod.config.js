@@ -1,3 +1,5 @@
+process.env.NODE_ENV = 'production';
+
 const autoprefixer = require('autoprefixer');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -149,7 +151,8 @@ module.exports = {
           loader: 'url-loader?limit=10000&mimetype=application/octet-stream'
         },
         {
-          test: /\.eot(\?v=\d+\.\d+\.\d+)?$/
+          test: /\.eot(\?v=\d+\.\d+\.\d+)?$/,
+          loader: 'file-loader'
         },
         {
           test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
