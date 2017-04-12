@@ -128,11 +128,17 @@ module.exports = {
         },
         {
           test: /\.png$/,
-          loader: 'url-loader?limit=100000'
+          loader: 'url-loader?limit=100000',
+          query: {
+              name: 'static/media/[name].[hash:8].[ext]'
+          }
         },
         {
           test: /\.jpg$/,
-          loader: 'file-loader'
+          loader: 'file-loader',
+          query: {
+              name: 'static/media/[name].[hash:8].[ext]'
+          }
         },
         {
           test: /\.(woff|woff2)(\?v=\d+\.\d+\.\d+)?$/,
@@ -143,12 +149,14 @@ module.exports = {
           loader: 'url-loader?limit=10000&mimetype=application/octet-stream'
         },
         {
-          test: /\.eot(\?v=\d+\.\d+\.\d+)?$/,
-          loader: 'file-loader'
+          test: /\.eot(\?v=\d+\.\d+\.\d+)?$/
         },
         {
           test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
-          loader: 'url-loader?limit=10000&mimetype=image/svg+xml'
+          loader: 'url-loader?limit=10000&mimetype=image/svg+xml',
+          query: {
+              name: 'static/media/[name].[hash:8].[ext]'
+          }
         }
       ]
   },
@@ -201,6 +209,7 @@ module.exports = {
     new webpack.optimize.DedupePlugin(),
     // Minify the code.
     new webpack.optimize.UglifyJsPlugin({
+      minimize: true,
       compress: {
         screw_ie8: true, // React doesn't support IE8
         warnings: false
