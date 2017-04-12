@@ -5,7 +5,7 @@
   "scripts": {
     "start": "node server/start.js",
     "build": "node server/build.js",
-    "postinstall": "rimraf build && npm run build"
+    "postinstall": "rimraf public && npm run build"
   },
   "author": {
     "name": "Romain Diegoni",
