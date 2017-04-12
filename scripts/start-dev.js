@@ -5,7 +5,7 @@ const historyApiFallback = require('connect-history-api-fallback');
 const httpProxyMiddleware = require('http-proxy-middleware');
 const chalk = require('chalk');
 
-const paths = require('../server/paths');
+const paths = require('../config/paths');
 const config = require('../webpack.dev.config');
 
 const isInteractive = process.stdout.isTTY;

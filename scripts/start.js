@@ -19,7 +19,7 @@ if (process.env.NODE_ENV === 'production') {
 
   app.get('/', function (_, res) { res.sendFile(indexPath) })
   app.listen(DEFAULT_PORT);
-  
+
   console.log(`Listening at http://localhost:${DEFAULT_PORT}`);
 
 } else  {

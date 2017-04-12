@@ -9,8 +9,8 @@ const path = require('path');
 
 const combineLoaders = require('webpack-combine-loaders');
 
-const paths = require('./server/paths');
-const getClientEnvironment = require('./server/env');
+const paths = require('./config/paths');
+const getClientEnvironment = require('./config/env');
 
 // webpack uses `publicPath` to determine where the app is being served from.
 // In development, we always serve from the root. This makes config easier.
@@ -31,7 +31,7 @@ module.exports = {
     // For hot style updates
     require.resolve('react-dev-utils/webpackHotDevClient'),
 
-    require.resolve('./server/polyfills'),
+    require.resolve('./config/polyfills'),
 
     // Our application
     paths.appIndexJs

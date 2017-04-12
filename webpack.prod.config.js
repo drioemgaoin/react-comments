@@ -4,8 +4,8 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const ManifestPlugin = require('webpack-manifest-plugin');
 const InterpolateHtmlPlugin = require('react-dev-utils/InterpolateHtmlPlugin');
-const paths = require('./server/paths');
-const getClientEnvironment = require('./server/env');
+const paths = require('./config/paths');
+const getClientEnvironment = require('./config/env');
 const combineLoaders = require('webpack-combine-loaders');
 
 // Webpack uses `publicPath` to determine where the app is being served from.
@@ -44,7 +44,7 @@ module.exports = {
   devtool: 'source-map',
   // In production, we only want to load the polyfills and the app code.
   entry: [
-    require.resolve('./server/polyfills'),
+    require.resolve('./config/polyfills'),
     paths.appIndexJs
   ],
   output: {
