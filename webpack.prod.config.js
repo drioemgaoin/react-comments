@@ -1,5 +1,3 @@
-process.env.NODE_ENV = 'production';
-
 const autoprefixer = require('autoprefixer');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -212,7 +210,6 @@ module.exports = {
     new webpack.optimize.DedupePlugin(),
     // Minify the code.
     new webpack.optimize.UglifyJsPlugin({
-      minimize: true,
       compress: {
         screw_ie8: true, // React doesn't support IE8
         warnings: false

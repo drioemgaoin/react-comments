@@ -204,7 +204,7 @@ function build(previousSizeMap) {
         console.log();
       }
       const buildPath = path.relative(process.cwd(), paths.appBuild);
-      console.log('The ' + chalk.cyan(build) + ' folder is ready to be deployed.');
+      console.log('The ' + chalk.cyan(buildPath) + ' folder is ready to be deployed.');
       console.log('You may also serve it locally with a static server:');
       console.log();
       if (useYarn) {
