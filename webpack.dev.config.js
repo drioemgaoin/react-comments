@@ -57,7 +57,7 @@ module.exports = {
     // Add /* filename */ comments to generated require()s in the output.
     pathinfo: true,
 
-    filename: 'bundle.js',
+    filename: 'static/js/bundle.js',
 
     // This is the URL that app is served from. We use "/" in development.
     publicPath: publicPath
@@ -83,7 +83,17 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        loader: 'style!css?importLoaders=1!postcss'
+        loader: combineLoaders([
+          {
+            loader: 'style-loader'
+          },
+          {
+            loader: 'css-loader?importLoaders=1'
+          },
+          {
+            loader: 'postcss-loader'
+          }
+        ])
       },
       {
           test: /(\.js)|(\.jsx)$/,

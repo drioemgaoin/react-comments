@@ -7,10 +7,11 @@ const clearConsole = require('react-dev-utils/clearConsole');
 const openBrowser = require('react-dev-utils/openBrowser');
 const formatWebpackMessages = require('react-dev-utils/formatWebpackMessages');
 const getProcessForPort = require('react-dev-utils/getProcessForPort');
+const prompt = require('react-dev-utils/prompt');
 const historyApiFallback = require('connect-history-api-fallback');
 const httpProxyMiddleware = require('http-proxy-middleware');
 const webpackConfig = require('../webpack.dev.config.js');
-const paths = require('./path');
+const paths = require('./paths');
 const detect = require('detect-port');
 const config = require('../webpack.dev.config');
 

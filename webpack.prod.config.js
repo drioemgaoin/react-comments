@@ -50,7 +50,7 @@ module.exports = {
   devtool: 'source-map',
   // In production, we only want to load the polyfills and the app code.
   entry: [
-    require.resolve('./polyfills'),
+    require.resolve('./server/polyfills'),
     paths.appIndexJs
   ],
   output: {
@@ -75,7 +75,7 @@ module.exports = {
     // We also include JSX as a common component filename extension to support
     // some tools, although we do not recommend using it, see:
     // https://github.com/facebookincubator/create-react-app/issues/290
-    extensions: ['', '.js', '.json', '.jsx', '', '.ts', '.tsx'],
+    extensions: ['', '.js', '.jsx', '.es6.jsx', '.scss', '.css'],
     alias: {
       // Support React Native Web
       // https://www.smashingmagazine.com/2016/08/a-glimpse-into-the-future-with-react-native-for-web/
@@ -103,8 +103,18 @@ module.exports = {
           ])
         },
         {
-          test: /\.css$/,
-          loader: 'style!css?importLoaders=1!postcss'
+            test: /\.css$/,
+            loader: combineLoaders([
+              {
+                loader: 'style-loader'
+              },
+              {
+                loader: 'css-loader?importLoaders=1'
+              },
+              {
+                loader: 'postcss-loader'
+              }
+            ])
         },
         {
             test: /(\.js)|(\.jsx)$/,
