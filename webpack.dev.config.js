@@ -57,10 +57,12 @@ module.exports = {
     // Add /* filename */ comments to generated require()s in the output.
     pathinfo: true,
 
-    filename: 'bundle.js',
+    filename: '[name].bundle.js',
 
     // This is the URL that app is served from. We use "/" in development.
-    publicPath: publicPath
+    publicPath: publicPath,
+
+    sourceMapFilename: '[name].map'
   },
 
   module: {
@@ -153,6 +155,11 @@ module.exports = {
       // <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico">
       // In development, this will be an empty string.
       new InterpolateHtmlPlugin(env.raw),
+      new webpack.DefinePlugin({
+          'process.env': {
+              'NODE_ENV': JSON.stringify('development')
+          }
+      }),
       // Generates an `index.html` file with the <script> injected.
       new HtmlWebpackPlugin({
         inject: true,
