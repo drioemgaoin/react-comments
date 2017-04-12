@@ -57,7 +57,7 @@ module.exports = {
     // Add /* filename */ comments to generated require()s in the output.
     pathinfo: true,
 
-    filename: 'static/js/bundle.js',
+    filename: 'bundle.js',
 
     // This is the URL that app is served from. We use "/" in development.
     publicPath: publicPath
