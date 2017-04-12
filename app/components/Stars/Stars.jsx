@@ -56,6 +56,8 @@ export default class ReactStars extends React.Component {
 
         const spread = event.target.getBoundingClientRect().right - event.target.getBoundingClientRect().left;
         const mouseAt = event.clientX - event.target.getBoundingClientRect().left;
+        //console.log(mouseAt);
+        //console.log(mouseAt);
         if (mouseAt > 0) {
             let index = Number(event.target.getAttribute('data-index'));
 
