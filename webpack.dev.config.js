@@ -9,7 +9,7 @@ const path = require('path');
 
 const combineLoaders = require('webpack-combine-loaders');
 
-const paths = require('./server/path');
+const paths = require('./server/paths');
 const getClientEnvironment = require('./server/env');
 
 // Webpack uses `publicPath` to determine where the app is being served from.
