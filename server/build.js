@@ -69,7 +69,7 @@ recursive(paths.appBuild, (err, fileNames) => {
   build(previousSizeMap);
 
   // Merge with the public folder
-  copyPublicFolder();
+  copyStaticFolder();
 });
 
 // Print a detailed summary of build files.
@@ -216,8 +216,8 @@ function build(previousSizeMap) {
   });
 }
 
-function copyPublicFolder() {
-  fs.copySync(paths.appPublic, paths.appBuild, {
+function copyStaticFolder() {
+  fs.copySync(paths.appStatic, paths.appBuild, {
     dereference: true,
     filter: file => file !== paths.appHtml
   });

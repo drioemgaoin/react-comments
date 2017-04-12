@@ -1,5 +1,6 @@
 const autoprefixer = require('autoprefixer');
 const webpack = require('webpack');
+const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const ManifestPlugin = require('webpack-manifest-plugin');
@@ -123,17 +124,11 @@ module.exports = {
         },
         {
           test: /\.png$/,
-          loader: 'url-loader?limit=100000',
-          query: {
-              name: 'static/media/[name].[hash:8].[ext]'
-          }
+          loader: 'url-loader?limit=100000'
         },
         {
           test: /\.jpg$/,
-          loader: 'file-loader',
-          query: {
-              name: 'static/media/[name].[hash:8].[ext]'
-          }
+          loader: 'file-loader'
         },
         {
           test: /\.(woff|woff2)(\?v=\d+\.\d+\.\d+)?$/,
@@ -149,10 +144,7 @@ module.exports = {
         },
         {
           test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
-          loader: 'url-loader?limit=10000&mimetype=image/svg+xml',
-          query: {
-              name: 'static/media/[name].[hash:8].[ext]'
-          }
+          loader: 'url-loader?limit=10000&mimetype=image/svg+xml'
         }
       ]
   },
