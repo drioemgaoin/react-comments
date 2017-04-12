@@ -4,7 +4,8 @@
   "description": "react comments",
   "scripts": {
     "start": "node server/start.js",
-    "build": "node server/build.js"
+    "build": "node server/build.js",
+    "postinstall": "npm run build"
   },
   "author": {
     "name": "Romain Diegoni",
