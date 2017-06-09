@@ -1,10 +1,5 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
-
-import CommentAvatar from './CommentAvatar';
-import CommentBody from './CommentBody';
-import CommentHeader from './CommentHeader';
 
 import './comment-list.scss';
 
@@ -13,27 +8,47 @@ let mapStateToProps = (state) => {
 }
 
 class CommentList extends React.Component {
-  static propTypes = {
-    comments: PropTypes.arrayOf(
-        PropTypes.shape({
-            author: PropTypes.string,
-            date: PropTypes.string.isRequired,
-            content: PropTypes.string.isRequired,
-            avatar: PropTypes.string,
-        })
-    )
-  };
+  renderAvatar(comment) {
+    const url = comment.avatar ? comment.avatar : this.props.defaultAvatar;
+    return (
+      <div className='comment__avatar'>
+          <img src={url}/>
+      </div>
+    );
+  }
+
+  renderHeader(comment) {
+    const author = comment.author ? comment.author : 'Anonymous';
+    return (
+      <div className='comment__header'>
+          <div className='comment__header__author'>{author}</div>
+          <div className='comment__header__note'>NOTE</div>
+          <div className='comment__header__date'>{comment.date}</div>
+      </div>
+    );
+  }
+
+  renderBody(comment) {
+    return (
+      <div className='comment__body'>
+          <p>{comment.content}</p>
+      </div>
+    );
+  }
 
   render() {
     return (
-        <div className="comment-list">
+        <div className='comment-list'>
             {
-                this.props.comments.map((comment,index) => {
-                    return (<div key={index} className="comment">
-                      <CommentAvatar image={comment.avatar ? comment.avatar : this.props.defaultAvatar }/>
-                      <CommentHeader author={comment.author ? comment.author : 'Anonymous' } date={comment.date} />
-                      <CommentBody content={comment.content} />
-                    </div>);
+                this.props.comments &&
+                this.props.comments.map((comment, index) => {
+                    return (
+                      <div key={index} className='comment'>
+                        {this.renderAvatar(comment)}
+                        {this.renderHeader(comment)}
+                        {this.renderBody(comment)}
+                      </div>
+                    );
                 })
             }
         </div>

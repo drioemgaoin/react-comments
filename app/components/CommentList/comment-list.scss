@@ -1,56 +1,64 @@
 .comment-list {
-    .comment:not(:first-child) {
-        margin-top: 50px;
-    }
+    .comment {
+        padding: 15px 0px;
+        border-bottom: 1px solid #ccc;
 
-    .comment-avatar {
-        display: inline-block;
-        vertical-align:top;
-        width: 50px;
-
-        img {
-          border-radius: 50%;
-          width: 50px;
-          height: 50px;
-          margin: auto;
-          background-size: contain;
-          vertical-align: middle;
-      }
-    }
-
-    .comment-header {
-        position: relative;
-        display: inline-block;
-        line-height: 50px;
-        height: 50px;
-        width: calc(100% - 100px);
-        background: lightgrey;
-        margin-left: 50px;
-
-        div {
+        &__avatar {
             display: inline-block;
+            vertical-align:top;
+            width: 50px;
 
-            &:first-child {
-                float: left;
-            }
+            img {
+              border-radius: 50%;
+              width: 50px;
+              height: 50px;
+              margin: auto;
+              background-size: contain;
+              vertical-align: middle;
+          }
+        }
 
-            &:last-child {
-                float: right;
+        &__header {
+            position: relative;
+            display: inline-block;
+            line-height: 50px;
+            width: calc(100% - 100px);
+            margin-left: 50px;
+            padding: 5px 10px;
+
+            &__author {
+              font-weight: bold;
+              font-size: 16px;
             }
         }
 
-        &:before {
-            content: '';
-            position: absolute;
-            left: -24px;
-            border-top: 25px solid transparent;
-            border-bottom: 25px solid transparent;
-            border-right:25px solid lightgrey;
+        &__body {
+            margin-left: 100px;
+            padding: 10px;
         }
     }
+}
 
-    .comment-body {
-        margin-left: 100px;
-        padding: 10px 0px;
-    }
+@media (min-width: 769px) {
+  .comment-list {
+      .comment {
+          &__header {
+              &__author {
+                width: 300px;
+              }
+
+              div {
+                  display: inline-block;
+
+                  &:first-child {
+                      float: left;
+                  }
+
+                  &:last-child {
+                      float: right;
+                  }
+              }
+          }
+      }
+  }
 }
