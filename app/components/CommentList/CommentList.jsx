@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import Stars from '../Stars/Stars';
 
 import './comment-list.scss';
 
@@ -22,7 +23,7 @@ class CommentList extends React.Component {
     return (
       <div className='comment__header'>
           <div className='comment__header__author'>{author}</div>
-          <div className='comment__header__note'>NOTE</div>
+          <div className='comment__header__note'><Stars /></div>
           <div className='comment__header__date'>{comment.date}</div>
       </div>
     );
