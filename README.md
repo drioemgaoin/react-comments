@@ -1,3 +1,5 @@
+Don't use before version 1.0.0!!
+
 # react comments
 
 Get the AMD module located at `react-comments.js` and include it in your project.

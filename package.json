@@ -1,11 +1,13 @@
 {
-  "name": "react-comments",
-  "version": "1.0.0",
-  "description": "react comments",
+  "name": "react-responsive-comments",
+  "version": "0.0.4",
+  "description": "react responsive comments",
   "scripts": {
     "start": "node scripts/start.js",
     "build": "node scripts/build-prod.js",
-    "postinstall": "rimraf public && npm run build"
+    "build:npm": "rimraf dist && webpack -d --config webpack.npm.config.js --progress",
+    "prepublish": "npm run build:npm",
+    "heroku-postbuild": "npm run build"
   },
   "author": {
     "name": "Romain Diegoni",
@@ -17,6 +19,7 @@
     "reactjs",
     "react-component"
   ],
+  "main": "dist/react-responsive-comments.js",
   "bugs": {
     "url": "https://github.com/drioemgaoin/react-comments/issues"
   },
@@ -70,7 +73,8 @@
     "webpack": "^1.13.1",
     "webpack-combine-loaders": "2.0.3",
     "webpack-dev-server": "^1.16.2",
-    "webpack-manifest-plugin": "^1.1.0"
+    "webpack-manifest-plugin": "^1.1.0",
+    "webpack-node-externals": "1.6.0"
   },
   "dependencies": {
     "babel-preset-react": "6.24.1",

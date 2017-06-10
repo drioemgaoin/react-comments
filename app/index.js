@@ -1,5 +1,3 @@
-import 'bootstrap/dist/css/bootstrap.css';
-
 import CommentList from './components/CommentList/CommentList';
 import CommentForm from './components/CommentForm/CommentForm';
 
