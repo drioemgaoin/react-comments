@@ -1,5 +1,5 @@
 import CommentList from './components/list/CommentList';
-import Comment from './components/Comment';
+import CommentForm from './components/form/CommentForm';
 
 module.exports = {
     // components
