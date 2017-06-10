@@ -1,18 +1,18 @@
 import React from 'react';
 import Stars from '../Stars/Stars';
 import moment from 'moment';
+import DefaultAvatar from '../../../static/default-avatar.png';
 
 import './comment-list.scss';
 
 export default class CommentList extends React.Component {
   static defaultProps = {
     comments: [],
-    defaultAvatar: 'default-avatar.png',
     dateFormat: 'DD/MM/YYYY HH:mm A'
   };
 
   renderAvatar(comment) {
-    const url = comment.avatar ? comment.avatar : this.props.defaultAvatar;
+    const url = comment.avatar ? comment.avatar : DefaultAvatar;
     return (
       <div className='comment__avatar'>
           <img src={url}/>
