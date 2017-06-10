@@ -25,11 +25,6 @@
             width: calc(100% - 100px);
             margin-left: 50px;
             padding: 5px 10px;
-
-            &__author {
-              font-weight: bold;
-              font-size: 16px;
-            }
         }
 
         &__body {
@@ -43,10 +38,6 @@
   .comment-list {
       .comment {
           &__header {
-              &__author {
-                width: 300px;
-              }
-
               div {
                   display: inline-block;
 

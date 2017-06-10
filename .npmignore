@@ -4,3 +4,4 @@
 # Except
 !dist/**/*
 !app/**/*
+!static/**/*

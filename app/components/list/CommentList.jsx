@@ -1,14 +1,15 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import Stars from '../Stars/Stars';
 
 import './comment-list.scss';
 
-let mapStateToProps = (state) => {
-  return state;
-}
+export default class CommentList extends React.Component {
+  static defaultProps = {
+    comments: [],
+    defaultAvatar: 'default-avatar.png',
+    dateFormat: 'DD/MM/YYYY HH:mm A'
+  };
 
-class CommentList extends React.Component {
   renderAvatar(comment) {
     const url = comment.avatar ? comment.avatar : this.props.defaultAvatar;
     return (
@@ -20,13 +21,16 @@ class CommentList extends React.Component {
 
   renderHeader(comment) {
     const author = comment.author ? comment.author : 'Anonymous';
-    return (
-      <div className='comment__header'>
-          <div className='comment__header__author'>{author}</div>
-          <div className='comment__header__note'><Stars /></div>
-          <div className='comment__header__date'>{comment.date}</div>
-      </div>
-    );
+    return this.props.children ? (
+          <div className='comment__header'>
+            {this.props.children}
+          </div>
+        ) : (
+          <div className='comment__header'>
+            <div className='comment__header__author'>{author}</div>
+            <div className='comment__header__date'>{comment.date.format(this.props.dateFormat)}</div>
+          </div>
+        );
   }
 
   renderBody(comment) {
@@ -56,5 +60,3 @@ class CommentList extends React.Component {
     );
   }
 }
-
-export default connect(mapStateToProps, null)(CommentList);

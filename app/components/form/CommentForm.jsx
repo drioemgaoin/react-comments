@@ -1,13 +1,9 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import moment from 'moment';
-
-import { addComment } from '../../actions/comment';
-import Stars from '../Stars/Stars';
 
 import './comment-form.scss';
 
-class CommentForm extends React.Component {
+export default class CommentForm extends React.Component {
     constructor(props) {
       super(props);
 
@@ -25,10 +21,11 @@ class CommentForm extends React.Component {
     handleSubmit(event) {
       event.preventDefault();
 
-      const { dispatch } = this.props;
-      dispatch(addComment(this.state.content, this.state.avatar, moment().format('DD/MM/YYYY HH:mm A')));
+      if (this.props.onSubmit) {
+        this.props.onSubmit(this.state);
 
-      this.setState({ content: '' });
+        this.setState({});
+      }
     }
 
     render() {
@@ -45,15 +42,10 @@ class CommentForm extends React.Component {
                 onChange={(e) => this.handleInputChange(e)}></textarea>
             </div>
 
-            <div className='form-inline'>
-                <label>Note</label>
-                <Stars className='form-control' />
-            </div>
+            {this.props.children}
 
             <input className='btn btn-primary' type="submit" value="Create" />
           </form>
         );
     }
 }
-
-export default connect()(CommentForm);

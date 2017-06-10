@@ -1,13 +1,8 @@
-import CommentList from './components/CommentList/CommentList';
-import CommentForm from './components/CommentForm/CommentForm';
-
-import commentsReducer from './reducers/comments';
+import CommentList from './components/list/CommentList';
+import Comment from './components/Comment';
 
 module.exports = {
     // components
     CommentList,
-    CommentForm,
-
-    // reducers
-    commentsReducer
+    CommentForm
 };
