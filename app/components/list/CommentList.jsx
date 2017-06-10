@@ -1,5 +1,6 @@
 import React from 'react';
 import Stars from '../Stars/Stars';
+import moment from 'moment';
 
 import './comment-list.scss';
 
@@ -28,7 +29,7 @@ export default class CommentList extends React.Component {
         ) : (
           <div className='comment__header'>
             <div className='comment__header__author'>{author}</div>
-            <div className='comment__header__date'>{comment.date.format(this.props.dateFormat)}</div>
+            <div className='comment__header__date'>{moment(comment.date).format(this.props.dateFormat)}</div>
           </div>
         );
   }
@@ -36,7 +37,11 @@ export default class CommentList extends React.Component {
   renderBody(comment) {
     return (
       <div className='comment__body'>
-          <p>{comment.content}</p>
+        {
+          comment.content.split('\n').map((item, key) => {
+            return <span key={key}>{item}<br/></span>
+          })
+        }
       </div>
     );
   }
