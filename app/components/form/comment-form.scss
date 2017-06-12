@@ -2,7 +2,7 @@
   padding: 10px;
   text-align: center;
 
-  .form-inline {
+  &__group {
       text-align: left;
       padding: 5px 0px;
   }
@@ -14,13 +14,9 @@
   }
 
   textarea {
-    width: calc(100% - 150px)!important;
+    width: calc(100% - 150px);
     height: 100px;
     resize: none;
+    border-color: #ccc;
   }
-
-  input {
-    margin-top: 10px;
-  }
-
 }

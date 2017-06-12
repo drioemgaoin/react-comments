@@ -32,10 +32,10 @@ export default class CommentForm extends React.Component {
         const { handleSubmit, submitting } = this.props;
         return (
           <form className='comment-form' method="post" onSubmit={(e) => this.handleSubmit(e)}>
-            <div className='form-inline'>
+            <div className='comment-form__group'>
               <label>Content</label>
-              <textarea id="content"
-                className='form-control'
+              <textarea 
+                className='comment-form__control'
                 name="content"
                 type="text"
                 value={this.state.content}
