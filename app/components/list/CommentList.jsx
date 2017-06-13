@@ -22,11 +22,8 @@ export default class CommentList extends React.Component {
 
   renderHeader(comment) {
     const author = comment.author ? comment.author : 'Anonymous';
-    return this.props.children ? (
-          <div className='comment__header'>
-            {this.props.children}
-          </div>
-        ) : (
+    return this.props.header ? this.props.header(comment)
+        : (
           <div className='comment__header'>
             <div className='comment__header__author'>{author}</div>
             <div className='comment__header__date'>{moment(comment.date).format(this.props.dateFormat)}</div>

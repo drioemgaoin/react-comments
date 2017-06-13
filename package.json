@@ -1,6 +1,6 @@
 {
   "name": "react-responsive-comments",
-  "version": "0.0.10",
+  "version": "0.0.11",
   "description": "react responsive comments",
   "scripts": {
     "start": "node scripts/start.js",
