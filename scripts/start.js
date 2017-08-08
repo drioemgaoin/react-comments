@@ -5,7 +5,7 @@ const detect = require('detect-port');
 const chalk = require('chalk');
 const path = require('path');
 
-const DEFAULT_PORT = parseInt(process.env.PORT, 10) || 3000;
+const DEFAULT_PORT = parseInt(process.env.PORT, 10) || 3001;
 
 require('dotenv').config({silent: true});
 

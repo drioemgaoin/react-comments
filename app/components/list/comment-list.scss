@@ -3,53 +3,84 @@
         padding: 15px 0px;
         border-bottom: 1px solid #ccc;
 
-        &__avatar {
-            display: inline-block;
-            vertical-align:top;
-            width: 50px;
+        .comment {
+            &__header {
+                position: relative;
 
-            img {
-              border-radius: 50%;
-              width: 50px;
-              height: 50px;
-              margin: auto;
-              background-size: contain;
-              vertical-align: middle;
-          }
+                &__avatar {
+                    display: inline-block;
+                    text-align: center;
+                    vertical-align: middle;
+
+                    img {
+                        border-radius: 50%;
+                        width: 50px;
+                        height: 50px;
+                        margin: auto;
+                        background-size: contain;
+                        vertical-align: middle;
+                    }
+                }
+
+                &__title {
+                    display: inline-block;
+                    vertical-align: middle;
+                    padding-right: 10px;
+
+                    > div {
+                        display: inline-block;
+                    }
+
+                    &__date {
+                        float: right;
+                    }
+                }
+            }
+
+            &__body {
+                width: 100%;
+                text-align: justify;
+            }
         }
+    }
+}
 
-        &__header {
-            position: relative;
-            display: inline-block;
-            line-height: 50px;
-            width: calc(100% - 100px);
-            margin-left: 50px;
-            padding: 5px 10px;
-        }
+@media (max-width: 769px) {
+    .comment-list {
+        .comment {
+            &__header {
+                &__avatar {
+                    width: 60px;
+                }
 
-        &__body {
-            margin-left: 100px;
-            padding: 10px;
+                &__title {
+                    width: calc(100% - 60px);
+                }
+            }
+
+            &__body {
+                padding: 10px;
+            }
         }
     }
 }
 
 @media (min-width: 769px) {
-  .comment-list {
-      .comment {
-          &__header {
-              div {
-                  display: inline-block;
+    .comment-list {
+        .comment {
+            &__header {
+                &__avatar {
+                    width: 100px;
+                }
 
-                  &:first-child {
-                      float: left;
-                  }
+                &__title {
+                    width: calc(100% - 100px);
+                }
+            }
 
-                  &:last-child {
-                      float: right;
-                  }
-              }
-          }
-      }
-  }
+            &__body {
+                padding: 10px 10px 10px 100px;
+            }
+        }
+    }
 }
